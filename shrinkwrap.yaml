@@ -27,6 +27,7 @@ dependencies:
   moment: 2.24.0
   ms: 2.1.2
   node-opus: 0.2.9
+  number-to-words: 1.2.4
   opusscript: 0.0.6
   pretty-ms: 3.1.0
   python: 0.0.4
@@ -2244,6 +2245,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
+  /number-to-words/1.2.4:
+    dev: false
+    resolution:
+      integrity: sha512-/fYevVkXRcyBiZDg6yzZbm0RuaD6i0qRfn8yr+6D0KgBMOndFPxuW10qCHpzs50nN8qKuv78k8MuotZhcVX6Pw==
   /oauth-sign/0.3.0:
     dev: false
     optional: true
@@ -3620,6 +3625,7 @@ specifiers:
   moment: ^2.22.1
   ms: ^2.1.1
   node-opus: ^0.2.7
+  number-to-words: ^1.2.4
   opusscript: 0.0.6
   pretty-ms: 3.1.0
   python: 0.0.4

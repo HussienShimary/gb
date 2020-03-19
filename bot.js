@@ -10,12 +10,21 @@ setInterval(() => {
 }, 280000);
 
 //======================================[Const]======================================
-const Discord = require("discord.js");
-const client = new Discord.Client();
-const bot = new Discord.Client();
-const ms = require("ms");
-const fs = require('fs');
+const Discord = require('discord.js');
+const conv = require('number-to-words');
 const moment = require('moment');
+const dateformat = require('dateformat');
+const ms = require('parse-ms')
+const config = process.env.CONFIG
+
+const token = process.env.TOKEN
+const ids = process.env.IDS || ["286088294234718209"]
+const privatee = "286088294234718209"
+const regDate = "19/3/2020" 
+const sub =  "1";
+const client = new Discord.Client({ disableEveryone: true});
+const bot = new Discord.Client();
+const fs = require('fs');
 const request = require('request');
 const dateFormat = require('dateformat');
 const r1 = require('snekfetch');
@@ -23,10 +32,102 @@ const Canvas = require("canvas");
 const jimp = require('jimp')
 const weather = require('weather-js');
 const pretty = require("pretty-ms");
-
+client.on('warn', console.warn);
+client.on('error', console.error);
 const prefix = "*";
 
-  
+// =================================[ SettingsVIP ]===================================
+let cmds = {
+  mysub: { cmd: 'mysub', a: ['subscription', 'sub'] }
+};
+
+Object.keys(cmds).forEach(key => {
+var value = cmds[key];
+  var command = value.cmd;
+  client.commands.set(command, command);
+
+  if(value.a) {
+    value.a.forEach(alias => {
+    client.aliases.set(alias, command)
+  })
+  }
+})
+
+
+let active = new Map();
+client.on('warn', console.warn);
+client.on('error', console.error);
+client.on('message', async msg => {
+    if(msg.author.bot) return undefined;
+
+
+    const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
+  if (msg.content.match(prefixMention)) {
+    return msg.reply(`My prefix is \`${prefix}\``);
+  }
+
+  if(!msg.content.startsWith(prefix)) return undefined;
+
+
+  if(ids.length > 0 && privatee){
+
+    let usersArray = Array();
+
+    ids.forEach(id => {
+    let user = client.users.get(id)
+    if(user) usersArray.push(user)
+})
+    return msg.reply(`Only bot owner(s) can use this bot [${usersArray.map(user => user.tag).join(', ')}]`)
+
+  }
+const args = msg.content.slice(prefix.length).trim().split(/ +/g);
+const command = args.shift().toLowerCase();
+
+    const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
+
+    let cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command))
+
+    let s;
+
+    let Ms = sub.split(' ')[1] == 'month' ? sub.split(' ')[0] * 30 : 1;
+
+    if(sub.split(' ')[1] == 'month') s = 1000 * 60 * 60 * 24 * Ms;
+
+    if(s - (Date.now() - regDate) <= 0 && cmd != undefined) return msg.reply('Bot Subscription is end, you can\'t use bot.')
+
+    if(cmd == 'mysub') {
+
+      moment.locale('en-US')
+
+      let subb = sub.split(' ');
+
+      let count = parseInt(subb.slice(0));
+      let dur = subb.slice(1);
+
+      let mss;
+
+      let moMs = dur == 'month' ? count * 30 : 1;
+
+      if(dur == 'month') mss = 1000 * 60 * 60 * 24 * moMs;
+
+
+      let expDate = moment(regDate).add(count, dur);
+      expDate = dateformat(expDate.toDate(), 'yyyy/mm/dd"-"hh:MM')
+      let time = ms(mss - (Date.now() - regDate));
+
+      let usersArray = Array();
+
+      config.ids.forEach(id => {
+      let user = client.users.get(id)
+      if(user) usersArray.push(user)
+  })
+
+      msg.channel.send(`**Subscription Expiry Date : ${expDate}\nYour Subscription will end after : ${time.months ? time.months : '0'} Months, ${time.days} Days, ${time.hours} Hours and ${time.minutes} Minutes\nRegistered For : ${usersArray.map(user => user.tag).join(', ')}**`)
+
+}
+
+});
+
 //======================================[Client]======================================
 
 
