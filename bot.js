@@ -28,13 +28,13 @@ client.on('warn', console.warn);
 client.on('error', console.error);
 
 // =================================[ SettingsVIP ]===================================
-//the code written with visual studio code the best program for coding .
+
 const vip = require('./vip.json')
 const prefix = vip.prefix
-
+const vipid = vip.vipid
 client.on('message', message => {
     let newserver = message.content.split(" ").slice(1).join(" ")
-if(!message.author.id === vip.vipid) return message.channel.send('This Command For The Person Purchased The Premium :x:')
+if(!message.author.id === vipid) return message.channel.send('This Command For The Person Purchased The Premium :x:')
 if(message.content.startsWith(prefix + 'vipmove')) {
     if(!newserver) return message.channel.send(`Please Write The ID Server`)
 vip.dserver = newserver
@@ -42,7 +42,7 @@ message.channel.send(`Done The Premium Bot Moved To ${newserver} , Now You Must 
 }
 if(message.content.startsWith(prefix + 'vipinfo')) {
 let embed = new Discord.RichEmbed()
-.addField('The person who bought the bot:', `<@${vip.vipid}>`)
+.addField('The person who bought the bot:', `<@${vipid}>`)
 .addField('The time the bot was purchased:', `${client.user.createdAt}` || `Write here the time the bot was purchased`)
 .addField('Bot expiration time:', `1 Year`)
 message.channel.sendEmbed(embed)
@@ -59,14 +59,11 @@ client.on(`guildCreate`, guild => {
     }, 5000);
 });
 
+
 client.on('ready', () => {
-    setTimeout(() => {
-        vip.vipid.send(`Sorry But The Premium Time Has Been Ended, You Must Purchase New Resources To Complete The Use Of Premium Featers`)
-       client.destroy()
-    }, 31557600000);
-
+  
+//       client.destroy()
 })
-
 
 
 
