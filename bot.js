@@ -615,8 +615,7 @@ client.on('message', message => {
 var guilds = {};
 client.on('message',async message => {
     
-  if(message.content.startsWith( prefix + "تحديث بصورة")) {
-
+        if (message.content.toLowerCase() === prefix + "تحديث جديد 2") {
 if(!message.channel.guild) return message.reply(' ');
 
 
@@ -731,11 +730,8 @@ if(!message.channel.guild) return message.reply(' ');
 
           collected.first().delete();
 
-          submite.send(`**
-> ${titleup}
-
- ${dec}
-**`);
+          submite.send(`**> ${titleup}
+ ${dec}**`);
 submite.sendFile(img)
 
         }
@@ -764,7 +760,7 @@ submite.sendFile(img)
   
     client.on('message',async message => {
 
-        if (message.content.toLowerCase() === prefix + "تحديث") {
+        if (message.content.toLowerCase() === prefix + "تحديث جديد") {
     
     if(!message.channel.guild) return message.reply(' ');
     
@@ -849,7 +845,7 @@ submite.sendFile(img)
                    img = collected.first().content;
 
          const embed = new Discord.RichEmbed()
-         .setColor('RANDOM')
+         .setColor('Gold')
          .setImage(img)
          .setThumbnail("https://media.discordapp.net/attachments/689539467228479560/690146105379389642/Oxygen.png")
          .setDescription(`**
