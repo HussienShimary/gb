@@ -763,8 +763,8 @@ submite.sendFile(img)
   
   
     client.on('message',async message => {
-    
-      if(message.content.startsWith( prefix + "تحديث")) {
+
+        if (message.content.toLowerCase() === prefix + "تحديث") {
     
     if(!message.channel.guild) return message.reply(' ');
     
@@ -847,7 +847,15 @@ submite.sendFile(img)
                     collected.first().delete();
     
                    img = collected.first().content;
-    
+
+         const embed = new Discord.RichEmbed()
+         .setColor('RANDOM')
+         .setImage(img)
+         .setThumbnail("https://media.discordapp.net/attachments/689539467228479560/690146105379389642/Oxygen.png")
+         .setDescription(`**
+>   ${titleup}
+         
+ ${dec} **`)
           msg.edit(`${emLoad} ** في حال كنت موافق لارسال التحديث اكتب \`\`موافق\`\` , اذاا كنت تريد ايقاف الاجراء اكتب \`\`توقف\`\` **`);
     
      message.channel.awaitMessages(response => response.content === 'موافق' || 'توقف' && filter,{
@@ -880,12 +888,9 @@ submite.sendFile(img)
     
               collected.first().delete();
     
-              submite.send(`**
-    > ${titleup}
-    
-     ${dec}
-    **`);
-    submite.sendFile(img)
+
+
+              submite.send(embed);
     
             }
     
@@ -911,49 +916,6 @@ submite.sendFile(img)
       
     
     
-
-client.on("message", message => {
-    if (message.content.toLowerCase() === prefix + "sells-b") {
-        message.delete(5000)
-        if(!message.channel.guild) return;
-     const embed = new Discord.RichEmbed()
-         .setColor('RANDOM')
-         .setThumbnail("https://media.discordapp.net/attachments/689539467228479560/689869857818411069/Oxygen.png")
-         .setDescription(`**
-> اسـعار البوتات :  
-         
-・ \`\` بوتات السيرفرات   \`\`
-
-・ برودكست بوت (10k)
-
-・ بوت القيف اواي (14k)
-
-・ تيكت بوت (30k)
-
-・ بوت لفل خاص بسيرفرك (50k)
-
-・ بوت الكلانات تخلي الاعضاء تسوي كلانات وتبعت لبعض وفي لفلات للكلانات (70k)
-
-・ \`\` اسعار البكجات  \`\`
-
-- البكج العادي  (150k)
-・ <#684914859812585482> <---
-
-- البكج المميزة (250k)
-・ <#684914859812585482> <---
-         
->   شروط الخدمة :
-
-<#678388255695306762>
-
-طرق الدفع :
-<:Probot:684994920645525530> \` Credits Probot \` 
-
-**`)
-   message.channel.send(embed);
-   
-   }
-   });
 
 
 
