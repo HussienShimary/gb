@@ -24,6 +24,7 @@ const Canvas = require("canvas");
 const jimp = require('jimp')
 const weather = require('weather-js');
 const pretty = require("pretty-ms");
+const rolestaff = "ÔxygenPerm";
 client.on('warn', console.warn);
 client.on('error', console.error);
 
@@ -629,6 +630,8 @@ var guilds = {};
 client.on('message',async message => {
     
         if (message.content.toLowerCase() === prefix + "تحديث جديد 2") {
+      let Kahr = message.guild.roles.find("name", rolestaff);
+      if (!Kahr) return message.reply(`** انتا عبيط ياض؟ **`); 
 if(!message.channel.guild) return message.reply(' ');
 
 
@@ -774,8 +777,8 @@ submite.sendFile(img)
     client.on('message',async message => {
 
         if (message.content.toLowerCase() === prefix + "تحديث جديد") {
-      let Kahr = message.guild.roles.find("name", "ÔxygenPerm");
-      if (!Kahr) return message.reply("f"); 
+      let Kahr = message.guild.roles.find("name", rolestaff);
+      if (!Kahr) return message.reply(`** انتا عبيط ياض؟ **`); 
     if(!message.channel.guild) return message.reply(' ');
     
     
