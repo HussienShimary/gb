@@ -60,10 +60,6 @@ client.on(`guildCreate`, guild => {
 });
 
 
-client.on('ready', () => {
-  
-//       client.destroy()
-})
 
 
 
@@ -778,7 +774,8 @@ submite.sendFile(img)
     client.on('message',async message => {
 
         if (message.content.toLowerCase() === prefix + "تحديث جديد") {
-    
+      let Kahr = message.guild.roles.find("name", "ÔxygenPerm");
+      if (!Kahr) return message.reply("f"); 
     if(!message.channel.guild) return message.reply(' ');
     
     
@@ -905,31 +902,28 @@ submite.sendFile(img)
 
               submite.send(embed);
     
-            }
-    
-          }
-    
-      );
-    
-    });
-    
-        });
-    
-      }
-    
-        );
-    
-      });
-    
-    }
-    
-    );
-    
-        })}});
-      
-    
-    
+        }
 
+      }
+
+  );
+
+});
+
+    });
+
+  }
+
+    );
+
+  })
+
+        }
+
+);
+
+    })}});
+  
 
 
 client.login(process.env.BOT_TOKEN);
