@@ -11,7 +11,7 @@ setInterval(() => {
 
 //======================================[Const]======================================
 const Discord = require('discord.js');
-const conv = require('number-to-words');
+const converter = require('number-to-words');
 const moment = require('moment');
 const dateformat = require('dateformat');
 const ms = require('parse-ms')
