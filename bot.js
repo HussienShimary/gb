@@ -45,14 +45,14 @@ client.on('ready', () => {
             .setThumbnail(`${message.author.avatarURL}`)
             .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
             .setFooter(`From : (@${message.author.tag})  |  (${message.author.id})`)
-        client.channels.get("683188057721012226").send({ embed: iiMo });
+        client.channels.get("690156654158807080").send({ embed: iiMo });
     }
 });
     
 //======================================[Owners]======================================
 
 
-const developers = ["470712192329711628","516364281990611006","538429283157409803"]
+const developers = ["286088294234718209","516364281990611006","329640165406670848"]
 const admin = "#";
 
 client.on('message', message => {
@@ -288,29 +288,6 @@ client.on('roleCreate', role => {
 //======================================[ WelCome ]======================================
 
 
-client.on('guildMemberAdd', member => {
-
-    const channel = member.guild.channels.find('name', 'chatt');
-  
-    const millis = new Date().getTime() - member.user.createdAt.getTime();
-    const now = new Date();
-    const createdAt = millis / 1000 / 60 / 60 / 24;
-
-
-
-
-  
-    const embed = new Discord.RichEmbed()
-    
-    .setColor("BLACK")
-    .setDescription(`**تاريخ دخولك للدسكورد منذ ${createdAt.toFixed(0)} يوم**`)
-    .setAuthor(member.user.tag, member.user.avatarURL);
-    channel.sendEmbed(embed);
-
-  
-});
-
-
 
   
 //======================================[Commands]======================================
@@ -334,7 +311,7 @@ client.on('guildMemberAdd', member => {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.reply("Cleared : ``" + textxt + "``").then(m => m.delete(3000));
+        msg.reply("** Cleared : ``" + textxt + "`` **").then(m => m.delete(3000));
         }    
     }
 }
@@ -433,8 +410,8 @@ client.on('message' , async (message) => {
         }
       possibleInvites.push(['\n\ ' +'<@'+ i.inviter.id +'>' + '  :  ' +   i.uses]);
        
-      if (i.uses === 20) {
-          message.member.addRole(message.member.guild.roles.find("name","💠 Level 20"));
+      if (i.uses === 50) {
+          message.member.addRole(message.member.guild.roles.find("name","Golden Member"));
       }
      
     })
@@ -451,7 +428,7 @@ client.on('message', message => {
          if(message.content === prefix + "قفل") {
                              if(!message.channel.guild) return 
   
-     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **على كيف امك هي ؟*');
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **على كيف امك هي ؟**');
                 message.channel.overwritePermissions(message.guild.id, {
               SEND_MESSAGES: false
   
