@@ -991,7 +991,7 @@ const ytdl = require('ytdl-core');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
-const youtube = new YouTube("AIzaSyDiWeC2cnEK1iQe9pf8xiFDlaZ14KeUlRc");
+const youtube = new YouTube("AIzaSyCs15LdVfyPIZLtvQLoLH7ld8C2bdYsdf0");
 
 
 let active = new Map();
