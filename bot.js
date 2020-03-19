@@ -17,10 +17,9 @@ const dateformat = require('dateformat');
 const ms = require('parse-ms')
 const config = process.env.CONFIG
 
-const token = process.env.TOKEN
-const ids = process.env.IDS || ["286088294234718209"]
-const privatee = "286088294234718209"
-const regDate = "19/3/2020" 
+const ids = "286088294234718209" || ["286088294234718209"]
+const privatee = "286088294234718209";
+const regDate = "19/3/2020";
 const sub =  "1";
 const client = new Discord.Client({ disableEveryone: true});
 const bot = new Discord.Client();
@@ -37,21 +36,7 @@ client.on('error', console.error);
 const prefix = "*";
 
 // =================================[ SettingsVIP ]===================================
-let cmds = {
-  mysub: { cmd: 'mysub', a: ['subscription', 'sub'] }
-};
 
-Object.keys(cmds).forEach(key => {
-var value = cmds[key];
-  var command = value.cmd;
-  client.commands.set(command, command);
-
-  if(value.a) {
-    value.a.forEach(alias => {
-    client.aliases.set(alias, command)
-  })
-  }
-})
 
 
 let active = new Map();
