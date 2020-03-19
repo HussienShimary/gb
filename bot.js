@@ -19,7 +19,7 @@ const ms = require('parse-ms')
 const ids = ["286088294234718209","","",""] || ["286088294234718209"]
 const privatee = "286088294234718209";
 const regDate = "19";
-const sub =  "1";
+const sub =  "30";
 const client = new Discord.Client({ disableEveryone: true});
 const bot = new Discord.Client();
 const fs = require('fs');
@@ -35,48 +35,69 @@ const prefix = "*";
 
 // =================================[ SettingsVIP ]===================================
 
+client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
 
+let cmds = {
+  play: { cmd: 'play', a: ['p'] },
+  skip: { cmd: 'skip', a: ['s'] },
+  stop: { cmd: 'stop' },
+  pause: { cmd: 'pause' },
+  resume: { cmd: 'resume', a: ['r'] },
+  volume: { cmd: 'volume', a: ['vol'] },
+  queue: { cmd: 'queue', a: ['q'] },
+  repeat: { cmd: 'repeat', a: ['re'] },
+  forceskip: { cmd: 'forceskip', a: ['fs', 'fskip'] },
+  skipto: { cmd: 'skipto', a: ['st'] },
+  nowplaying: { cmd: 'nowplaying', a: ['np'] },
+  mysub: { cmd: 'mysub', a: ['subscription', 'sub'] }
+};
+
+Object.keys(cmds).forEach(key => {
+var value = cmds[key];
+  var command = value.cmd;
+  client.commands.set(command, command);
+
+  if(value.a) {
+    value.a.forEach(alias => {
+    client.aliases.set(alias, command)
+  })
+  }
+})
+
+const ytdl = require('ytdl-core');
+const getYoutubeID = require('get-youtube-id');
+const fetchVideoInfo = require('youtube-info');
+const YouTube = require('simple-youtube-api');
+const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 
 let active = new Map();
+
 client.on('warn', console.warn);
 client.on('error', console.error);
+
+client.on('ready', () => {
+    console.log(`Created By: MohmaedAlhassny`);
+    console.log(`Developed By: ! Abdulrhman with ♥`);
+    console.log(`Customer Number 1`);
+    console.log(`Guilds: ${client.guilds.size}`);
+    console.log(`Users: ${client.users.size}`);
+    client.user.setActivity(`Type ${prefix}help`,{type: 'Playing'});
+});
+
 client.on('message', async msg => {
     if(msg.author.bot) return undefined;
-      moment.locale('en-US')
-
-      let subb = sub.split(' ');
-
-      let count = parseInt(subb.slice(0));
-      let dur = subb.slice(1);
-
-      let mss;
-
-      let moMs = dur == 'month' ? count * 30 : 1;
-
-      if(dur == 'month') mss = 1000 * 60 * 60 * 24 * moMs;
-
-
-      let expDate = moment(regDate).add(count, dur);
-      expDate = dateformat(expDate.toDate(), 'yyyy/mm/dd"-"hh:MM')
-      let time = ms(mss - (Date.now() - regDate));
-
-      let usersArray = Array();
-
-      ids.forEach(id => {
-      let user = client.users.get(id)
-      if(user) usersArray.push(user)
-  })
 
 
     const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
   if (msg.content.match(prefixMention)) {
-    return msg.reply(`My prefix is \`${regDate}\``);
+    return msg.reply(`My prefix is \`${prefix}\``);
   }
 
   if(!msg.content.startsWith(prefix)) return undefined;
 
 
-  if(ids.length > 0 && privatee){
+  if(ids.length > 0 && config.privatee){
 
     let usersArray = Array();
 
@@ -87,6 +108,8 @@ client.on('message', async msg => {
     return msg.reply(`Only bot owner(s) can use this bot [${usersArray.map(user => user.tag).join(', ')}]`)
 
   }
+
+
 const args = msg.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
 
@@ -124,16 +147,18 @@ const command = args.shift().toLowerCase();
 
       let usersArray = Array();
 
-      ids.forEach(id => {
+      config.ids.forEach(id => {
       let user = client.users.get(id)
       if(user) usersArray.push(user)
   })
 
-   msg.channel.send(`**Subscription Expiry Date : ${expDate}\nYour Subscription will end after : ${time.months ? time.months : '0'} Months, ${time.days} Days, ${time.hours} Hours and ${time.minutes} Minutes\nRegistered For : ${usersArray.map(user => user.tag).join(', ')}**`)
+      msg.channel.send(`**Subscription Expiry Date : ${expDate}\nYour Subscription will end after : ${time.months ? time.months : '0'} Months, ${time.days} Days, ${time.hours} Hours and ${time.minutes} Minutes\nRegistered For : ${usersArray.map(user => user.tag).join(', ')}**`)
 
 }
 
-});
+    }
+
+);
 
 //======================================[Client]======================================
 
