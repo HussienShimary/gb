@@ -747,8 +747,7 @@ if(!message.channel.guild) return message.reply(' ');
 
           collected.first().delete();
 
-          submite.send(`**> ${titleup}
- ${dec}**`);
+          submite.send(`**> ${titleup} ${dec}**`);
 submite.sendFile(img)
 
         }
@@ -1004,7 +1003,6 @@ client.on('ready', () => {
     console.log(`Created By: Kahrbaa`);
     console.log(`Guilds: ${client.guilds.size}`);
     console.log(`Users: ${client.users.size}`);
-    client.user.setActivity(`Type ${prefix}help`,{type: 'Playing'});
 });
 
 client.on('message', async msg => {
