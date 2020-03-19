@@ -15,17 +15,15 @@ const conv = require('number-to-words');
 const moment = require('moment');
 const dateformat = require('dateformat');
 const ms = require('parse-ms')
-const config = process.env.CONFIG
 
-const ids = "286088294234718209" || ["286088294234718209"]
+const ids = ["286088294234718209","","",""] || ["286088294234718209"]
 const privatee = "286088294234718209";
-const regDate = "19/3/2020";
+const regDate = "19";
 const sub =  "1";
 const client = new Discord.Client({ disableEveryone: true});
 const bot = new Discord.Client();
 const fs = require('fs');
 const request = require('request');
-const dateFormat = require('dateformat');
 const r1 = require('snekfetch');
 const Canvas = require("canvas");
 const jimp = require('jimp')
@@ -44,11 +42,35 @@ client.on('warn', console.warn);
 client.on('error', console.error);
 client.on('message', async msg => {
     if(msg.author.bot) return undefined;
+      moment.locale('en-US')
+
+      let subb = sub.split(' ');
+
+      let count = parseInt(subb.slice(0));
+      let dur = subb.slice(1);
+
+      let mss;
+
+      let moMs = dur == 'month' ? count * 30 : 1;
+
+      if(dur == 'month') mss = 1000 * 60 * 60 * 24 * moMs;
+
+
+      let expDate = moment(regDate).add(count, dur);
+      expDate = dateformat(expDate.toDate(), 'yyyy/mm/dd"-"hh:MM')
+      let time = ms(mss - (Date.now() - regDate));
+
+      let usersArray = Array();
+
+      ids.forEach(id => {
+      let user = client.users.get(id)
+      if(user) usersArray.push(user)
+  })
 
 
     const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
   if (msg.content.match(prefixMention)) {
-    return msg.reply(`My prefix is \`${prefix}\``);
+    return msg.reply(`My prefix is \`${regDate}\``);
   }
 
   if(!msg.content.startsWith(prefix)) return undefined;
@@ -102,12 +124,12 @@ const command = args.shift().toLowerCase();
 
       let usersArray = Array();
 
-      config.ids.forEach(id => {
+      ids.forEach(id => {
       let user = client.users.get(id)
       if(user) usersArray.push(user)
   })
 
-      msg.channel.send(`**Subscription Expiry Date : ${expDate}\nYour Subscription will end after : ${time.months ? time.months : '0'} Months, ${time.days} Days, ${time.hours} Hours and ${time.minutes} Minutes\nRegistered For : ${usersArray.map(user => user.tag).join(', ')}**`)
+   msg.channel.send(`**Subscription Expiry Date : ${expDate}\nYour Subscription will end after : ${time.months ? time.months : '0'} Months, ${time.days} Days, ${time.hours} Hours and ${time.minutes} Minutes\nRegistered For : ${usersArray.map(user => user.tag).join(', ')}**`)
 
 }
 
