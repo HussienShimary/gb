@@ -15,11 +15,6 @@ const conv = require('number-to-words');
 const moment = require('moment');
 const dateformat = require('dateformat');
 const ms = require('parse-ms')
-
-const ids = ["286088294234718209","","",""] || ["286088294234718209"]
-const privatee = "286088294234718209";
-const regDate = "19";
-const sub =  "30";
 const client = new Discord.Client({ disableEveryone: true});
 const bot = new Discord.Client();
 const fs = require('fs');
@@ -31,134 +26,49 @@ const weather = require('weather-js');
 const pretty = require("pretty-ms");
 client.on('warn', console.warn);
 client.on('error', console.error);
-const prefix = "*";
 
 // =================================[ SettingsVIP ]===================================
+//the code written with visual studio code the best program for coding .
+const vip = require('./vip.json')
+const prefix = vip.prefix
 
-client.commands = new Discord.Collection();
-client.aliases = new Discord.Collection();
-
-let cmds = {
-  play: { cmd: 'play', a: ['p'] },
-  skip: { cmd: 'skip', a: ['s'] },
-  stop: { cmd: 'stop' },
-  pause: { cmd: 'pause' },
-  resume: { cmd: 'resume', a: ['r'] },
-  volume: { cmd: 'volume', a: ['vol'] },
-  queue: { cmd: 'queue', a: ['q'] },
-  repeat: { cmd: 'repeat', a: ['re'] },
-  forceskip: { cmd: 'forceskip', a: ['fs', 'fskip'] },
-  skipto: { cmd: 'skipto', a: ['st'] },
-  nowplaying: { cmd: 'nowplaying', a: ['np'] },
-  mysub: { cmd: 'mysub', a: ['subscription', 'sub'] }
-};
-
-Object.keys(cmds).forEach(key => {
-var value = cmds[key];
-  var command = value.cmd;
-  client.commands.set(command, command);
-
-  if(value.a) {
-    value.a.forEach(alias => {
-    client.aliases.set(alias, command)
-  })
-  }
-})
-
-const ytdl = require('ytdl-core');
-const getYoutubeID = require('get-youtube-id');
-const fetchVideoInfo = require('youtube-info');
-const YouTube = require('simple-youtube-api');
-const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
-
-let active = new Map();
-
-client.on('warn', console.warn);
-client.on('error', console.error);
-
-client.on('ready', () => {
-    console.log(`Created By: MohmaedAlhassny`);
-    console.log(`Developed By: ! Abdulrhman with ♥`);
-    console.log(`Customer Number 1`);
-    console.log(`Guilds: ${client.guilds.size}`);
-    console.log(`Users: ${client.users.size}`);
-    client.user.setActivity(`Type ${prefix}help`,{type: 'Playing'});
-});
-
-client.on('message', async msg => {
-    if(msg.author.bot) return undefined;
-
-
-    const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
-  if (msg.content.match(prefixMention)) {
-    return msg.reply(`My prefix is \`${prefix}\``);
-  }
-
-  if(!msg.content.startsWith(prefix)) return undefined;
-
-
-  if(ids.length > 0 && config.privatee){
-
-    let usersArray = Array();
-
-    ids.forEach(id => {
-    let user = client.users.get(id)
-    if(user) usersArray.push(user)
-})
-    return msg.reply(`Only bot owner(s) can use this bot [${usersArray.map(user => user.tag).join(', ')}]`)
-
-  }
-
-
-const args = msg.content.slice(prefix.length).trim().split(/ +/g);
-const command = args.shift().toLowerCase();
-
-    const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
-
-    let cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command))
-
-    let s;
-
-    let Ms = sub.split(' ')[1] == 'month' ? sub.split(' ')[0] * 30 : 1;
-
-    if(sub.split(' ')[1] == 'month') s = 1000 * 60 * 60 * 24 * Ms;
-
-    if(s - (Date.now() - regDate) <= 0 && cmd != undefined) return msg.reply('Bot Subscription is end, you can\'t use bot.')
-
-    if(cmd == 'mysub') {
-
-      moment.locale('en-US')
-
-      let subb = sub.split(' ');
-
-      let count = parseInt(subb.slice(0));
-      let dur = subb.slice(1);
-
-      let mss;
-
-      let moMs = dur == 'month' ? count * 30 : 1;
-
-      if(dur == 'month') mss = 1000 * 60 * 60 * 24 * moMs;
-
-
-      let expDate = moment(regDate).add(count, dur);
-      expDate = dateformat(expDate.toDate(), 'yyyy/mm/dd"-"hh:MM')
-      let time = ms(mss - (Date.now() - regDate));
-
-      let usersArray = Array();
-
-      config.ids.forEach(id => {
-      let user = client.users.get(id)
-      if(user) usersArray.push(user)
-  })
-
-      msg.channel.send(`**Subscription Expiry Date : ${expDate}\nYour Subscription will end after : ${time.months ? time.months : '0'} Months, ${time.days} Days, ${time.hours} Hours and ${time.minutes} Minutes\nRegistered For : ${usersArray.map(user => user.tag).join(', ')}**`)
-
+client.on('message', message => {
+    let newserver = message.content.split(" ").slice(1).join(" ")
+if(!message.author.id === vip.vipid) return message.channel.send('This Command For The Person Purchased The Premium :x:')
+if(message.content.startsWith(prefix + 'vipmove')) {
+    if(!newserver) return message.channel.send(`Please Write The ID Server`)
+vip.dserver = newserver
+message.channel.send(`Done The Premium Bot Moved To ${newserver} , Now You Must Invite Me In This Server https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot`)
+}
+if(message.content.startsWith(prefix + 'vipinfo')) {
+let embed = new Discord.RichEmbed()
+.addField('The person who bought the bot:', `<@${vip.vipid}>`)
+.addField('The time the bot was purchased:', `${client.user.createdAt}` || `Write here the time the bot was purchased`)
+.addField('Bot expiration time:', `1 Year`)
+message.channel.sendEmbed(embed)
 }
 
-    }
+})
 
-);
+client.on(`guildCreate`, guild => {
+    if (guild.id !== vip.dserver) guild.leave();
+    setTimeout(() => {
+        client.guilds.forEach(guildss => {
+            if (guildss.id !== vip.dserver) guild.leave();
+        });
+    }, 5000);
+});
+
+client.on('ready', () => {
+    setTimeout(() => {
+        vip.vipid.send(`Sorry But The Premium Time Has Been Ended, You Must Purchase New Resources To Complete The Use Of Premium Featers`)
+       client.destroy()
+    }, 31557600000);
+
+})
+
+
+
 
 //======================================[Client]======================================
 
