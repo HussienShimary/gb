@@ -21,13 +21,13 @@ const request = require('request');
 const r1 = require('snekfetch');
 const Canvas = require("canvas");
 const jimp = require('jimp')
-const GUILDID = '688833600103120896'; // اي دي السيرفر  
-const CHANNELID = '689547596083101712'; // اي دي الروم
+const GUILDID = ''; // اي دي السيرفر  
+const CHANNELID = ''; // اي دي الروم
 client.on('warn', console.warn);
 client.on('error', console.error);
 
 //=================//
-const prefix = "*";
+const prefix = "*"; // البرافيكس
 //=================//
 
 
@@ -45,36 +45,41 @@ client.on('ready', () => {
 
 const developers = ["","","",""]
 
+
+
+
 client.on('message', message => {
-    var argresult = message.content.split(` `).slice(1).join(' ');
+
+    let argresult = message.content.split(` `).slice(1).join(' ');
+    if (message.content.startsWith(prefix + 'setStreaming')) {
       if (!developers.includes(message.author.id)) return;
-      
-  if (message.content.startsWith(prefix + 'ply')) {
-    client.user.setGame(argresult);
-      message.channel.send(`**✅   ${argresult}**`)
-  }  else  
-  if (message.content.startsWith(prefix + 'wt')) {
-  client.user.setActivity(argresult, {type:'WATCHING'});
-      message.channel.send(`**✅   ${argresult}**`)
-  } else 
-  if (message.content.startsWith(prefix + 'ls')) {
-  client.user.setActivity(argresult , {type:'LISTENING'});
-      message.channel.send(`**✅   ${argresult}**`)
-  } else 
-  if (message.content.startsWith(prefix + 'st')) {
-    client.user.setGame(argresult, "https://www.twitch.tv/Kah");
-      message.channel.send(`**✅**`)
-  }
-  if (message.content.startsWith(prefix + 'setname')) {
-      client.user.setUsername(argresult).then
-      message.channel.send(`Changing The Name To ..**${argresult}** `)
-      return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
-} else
-if (message.content.startsWith(prefix + 'setavatar')) {
-  client.user.setAvatar(argresult);
-    message.channel.send(`Changing The Avatar To :**${argresult}** `);
-}
-});  
+      message.delete();
+      client.user.setGame(argresult, 'https://twitch.tv/Kahrbaa');
+
+    } else if(message.content.startsWith(prefix + 'setWatching')) {
+        client.user.setActivity(argresult,{type: 'WATCHING'});
+
+      } else if(message.content.startsWith(prefix + 'setListening')) {
+        client.user.setActivity(argresult,{type: 'LISTENING'});
+
+      } else if(message.content.startsWith(prefix + 'setPlaying')) {
+        client.user.setActivity(argresult,{type: 'PLAYING'});
+
+      } else if(message.content.startsWith(prefix + 'setName')) {
+        client.user.setUsername(argresult);
+
+      } else if(message.content.startsWith(prefix + 'setAvatar')) {
+        client.user.setAvatar(argresult);
+
+
+      } else if(message.content.startsWith(prefix + 'setStatus')) {
+        if(!argresult) return message.channel.send('`online`, `DND(Do not Distrub),` `idle`, `invisible(Offline)` :notes: أختر أحد الحالات');
+        client.user.setStatus(argresult);
+
+
+    }
+
+  });
 
 
 
@@ -678,6 +683,21 @@ K-MUSIC BOT V2 - CODE BY : KAHRBAA
 }
 });
 
+
+client.on('message', message => {
+      if (!developers.includes(message.author.id)) return;
+  var helplist = `**:gear: | اوامر الادارة:  
+> setStreaming : لجعل وضع البوت ستريمنق
+> setWatching : لجعل وضع البوت واتشنق
+> setListening : لجعل وضع البوت ليستننق
+> setName :  لتغيير أسم البوت
+> setAvatar : لتغيير صورة البوت
+> setStatus : لتغيير حالة البوت
+**`
+  if(message.content === prefix + 'help') {
+    message.author.send(helplist);
+  }
+  });
 
 
 
