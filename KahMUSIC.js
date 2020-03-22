@@ -11,6 +11,7 @@ setInterval(() => {
 
 //======================================[Const]======================================
 const Discord = require('discord.js');
+const converter = require('number-to-words');
 const moment = require('moment');
 const dateformat = require('dateformat');
 const ms = require('parse-ms')
@@ -21,10 +22,12 @@ const request = require('request');
 const r1 = require('snekfetch');
 const Canvas = require("canvas");
 const jimp = require('jimp')
-const GUILDID = ''; // اي دي السيرفر  
-const CHANNELID = ''; // اي دي الروم
+const weather = require('weather-js');
+const pretty = require("pretty-ms");
 client.on('warn', console.warn);
 client.on('error', console.error);
+const GUILDID = ''; // اي دي السيرفر  
+const CHANNELID = ''; // اي دي الروم
 
 //=================//
 const prefix = "*"; // البرافيكس

@@ -16,6 +16,8 @@
   "dependencies": {
     "anti-spam": "^0.2.7",
     "array-sort": "^1.0.0",
+    "number-to-words": "^1.2.4",
+    "weather-js": "^2.0.0",
     "ascii-data-table": "^2.1.1",
     "common-tags": "^1.8.0",
     "math-expression-evaluator": "^1.2.17",
@@ -28,6 +30,7 @@
     "steam-search": "^1.0.0",
     "hypixel-api": "1.1.0",
     "name": "^0.0.2",
+    "3amyah": "^1.0.0",
     "google-translate-api": "^2.3.0",
     "dateformat": "^3.0.3",
     "discord-anti-spam": "^2.1.1",
