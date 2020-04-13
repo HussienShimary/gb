@@ -82,7 +82,7 @@ client.on('message', message => {
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
-////اوامر التشغيل
+///اوامر التشغيل
 let cmds = {
   play: { cmd: 'play', a: ['p', 'شغل'] },
   skip: { cmd: 'skip', a: ['s', 'تخطى'] },
