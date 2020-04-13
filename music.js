@@ -136,7 +136,7 @@ const ytdl = require('ytdl-core');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
-const youtube = new YouTube("AIzaSyCV-gpF833pZcVeo0K6SBhGRTGiJZfcXWA"); //تعديل مهم عدل الاي بي اي بواحد جديد او خليه زي ماهو
+const youtube = new YouTube("AIzaSyApFg4t8RUKVHjeXl3VUFJMVT-V1WuaiHM"); //تعديل مهم عدل الاي بي اي بواحد جديد او خليه زي ماهو
 
 
 let active = new Map();
