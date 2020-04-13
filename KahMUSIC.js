@@ -82,7 +82,7 @@ client.on('message', message => {
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
-
+////اوامر التشغيل
 let cmds = {
   play: { cmd: 'play', a: ['p', 'شغل'] },
   skip: { cmd: 'skip', a: ['s', 'تخطى'] },
@@ -392,7 +392,7 @@ function play(guild, song) {
 
       if(isNaN(args[0])) return msg.channel.send(':notes: Numbers only!');
 
-      if(parseInt(args[0]) > 100) return msg.channel.send('You can\'t set the volume more than 100.')
+      if(parseInt(args[0]) > 100) return msg.channel.send('You can\'t set the volume more than **100**.')
 //:speaker: Volume changed from 20 to 20 ! The volume has been changed from ${queue.volume} to ${args[0]}
       msg.channel.send(':loud_sound: Volume has been **changed** from (`' + queue.volume + '`) to (`' + args[0] + '`)');
 
