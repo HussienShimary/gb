@@ -26,22 +26,19 @@ const weather = require('weather-js');
 const pretty = require("pretty-ms");
 client.on('warn', console.warn);
 client.on('error', console.error);
-const GUILDID = '695864316074655824'; // ايدي السيرفر  
-const CHANNELID = '699224759145332746'; // ايدي الروم
+const GUILDID = '695864316074655824'; //  تعديل مهم ايدي السيرفر  
+const CHANNELID = '699224759145332746'; // تعديل مهم ايدي الروم الصوتي
 
-//=================//
-const prefix = "1"; // البرافيكس
-
-
-// =================================[ SettingsVIP ]===================================
+//البرفكس
+const prefix = "1"; // تعديل مهم حط هنا البرفكس او مقدمة الامر
 
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setActivity("1help",{type: 'WATCHING'})
+  client.user.setActivity(`Type ${prefix}help`, { type: "Playing" }); ///التعديل علي البلاينج
 });
 
-  
+
 //تغير الحالة
 const developers = ["359541019836022784","","",""]
 client.on('message', message => {
@@ -135,7 +132,7 @@ const ytdl = require('ytdl-core');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
-const youtube = new YouTube("AIzaSyCV-gpF833pZcVeo0K6SBhGRTGiJZfcXWA");
+const youtube = new YouTube("AIzaSyCV-gpF833pZcVeo0K6SBhGRTGiJZfcXWA"); //تعديل مهم عدل الاي بي اي بواحد جديد او خليه زي ماهو
 
 
 let active = new Map();
