@@ -9,7 +9,7 @@ setInterval(() => {
   http.get(`http://.glitch.me/`);
 }, 280000);
 
-//======================================[Const]======================================
+//كل البكجات
 const Discord = require('discord.js');
 const converter = require('number-to-words');
 const moment = require('moment');
@@ -26,11 +26,11 @@ const weather = require('weather-js');
 const pretty = require("pretty-ms");
 client.on('warn', console.warn);
 client.on('error', console.error);
-const GUILDID = ''; // اي دي السيرفر  
-const CHANNELID = ''; // اي دي الروم
+const GUILDID = '695864316074655824'; // ايدي السيرفر  
+const CHANNELID = '699224759145332746'; // ايدي الروم
 
 //=================//
-const prefix = "*"; // البرافيكس
+const prefix = "1"; // البرافيكس
 //=================//
 
 
@@ -39,14 +39,14 @@ const prefix = "*"; // البرافيكس
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setActivity("Kahrbaa MUSIC✨",{type: 'WATCHING'})
+   client.user.setActivity("1help✨",{type: 'WATCHING'})
 });
 
   
 //======================================[Owners]======================================
 
 
-const developers = ["","","",""]
+const developers = ["359541019836022784","","",""]
 
 
 
@@ -57,7 +57,7 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + 'setStreaming')) {
       if (!developers.includes(message.author.id)) return;
       message.delete();
-      client.user.setGame(argresult, 'https://twitch.tv/Kahrbaa');
+      client.user.setGame(argresult, 'https://twitch.tv/0sama18');
 
     } else if(message.content.startsWith(prefix + 'setWatching')) {
         client.user.setActivity(argresult,{type: 'WATCHING'});
@@ -154,7 +154,7 @@ client.on('warn', console.warn);
 client.on('error', console.error);
 
 client.on('ready', () => {
-    console.log(`Created By: Kahrbaa`);
+    console.log(`on`);
     console.log(`Guilds: ${client.guilds.size}`);
     console.log(`Users: ${client.users.size}`);
 });
@@ -402,7 +402,7 @@ function play(guild, song) {
 
       if(parseInt(args[0]) > 100) return msg.channel.send('You can\'t set the volume more than 100.')
 //:speaker: Volume changed from 20 to 20 ! The volume has been changed from ${queue.volume} to ${args[0]}
-      msg.channel.send(':speaker: Volume has been **changed** from (`' + queue.volume + '`) to (`' + args[0] + '`)');
+      msg.channel.send(':loud_sound: Volume has been **changed** from (`' + queue.volume + '`) to (`' + args[0] + '`)');
 
       queue.volume = args[0];
 
@@ -660,28 +660,24 @@ client.on('message', message => {
 client.on('message', message => {
   var helplist = `**:notes:  قائمة الاوامر:  
 
-> Play : تشغيل الاغنية او اضافتها للقائمة او اكمال الاغنية [p] 
-> Pause : ايقاف مؤقت الاغنية  
-> Resume : اكمال الاغنية 
-> stop : لأيقاف الأغنية وخروج البوت من الروم
-> forceskip : لتخطي الأغنية بشكل مباشر
-> Queue : عرض القائمة 
-> skipto : لتخطي الأغنية الى الأغنية القادمة في طابور الموسيقى القادمة
-> Skip : تخطي للاغنية التالية 
-> Volume : تغيير الصوت [vol] 
-> Nowplaying : عرض مايتم تشغيله الان [np] 
-> Ping : سرعة استجابة البوت 
-> repeat : تكرار الاغنية 
-> Leave : الخروج من الروم الصوتي  
-
-K-MUSIC BOT V2 - CODE BY : KAHRBAA
-- https://www.youtube.com/channel/UCb0HLm_jF-k72G2DN4yX1sA
-- https://discord.gg/gGthrQq
+Play : تشغيل الاغنية او اضافتها للقائمة او اكمال الاغنية [p] 
+Pause : ايقاف مؤقت الاغنية  
+Resume : اكمال الاغنية 
+stop : لأيقاف الأغنية وخروج البوت من الروم
+forceskip : لتخطي الأغنية بشكل مباشر
+Queue : عرض القائمة 
+skipto : لتخطي الأغنية الى الأغنية القادمة في طابور الموسيقى القادمة
+Skip : تخطي للاغنية التالية 
+Volume : تغيير الصوت [vol] 
+Nowplaying : عرض مايتم تشغيله الان [np] 
+Ping : سرعة استجابة البوت 
+repeat : تكرار الاغنية 
+Leave : الخروج من الروم الصوتي  
 **`
   if(message.content === prefix + 'help') {
             message.delete(1000)
     let e = '** جاري الارســال .. :envelope_with_arrow: **'
-	  message.reply(e).then(m => m.delete(1000))
+	  message.reply(e).then(m => m.delete(10000))
 	  message.author.send(helplist).catch(error => message.reply('** لم اتمكن من الارسال الاوامر لك , يرجي فتح خاصك :negative_squared_cross_mark:**'))
 }
 });
@@ -690,20 +686,16 @@ K-MUSIC BOT V2 - CODE BY : KAHRBAA
 client.on('message', message => {
       if (!developers.includes(message.author.id)) return;
   var helplist = `**:gear: | اوامر الادارة:  
-> setStreaming : لجعل وضع البوت ستريمنق
-> setWatching : لجعل وضع البوت واتشنق
-> setListening : لجعل وضع البوت ليستننق
-> setName :  لتغيير أسم البوت
-> setAvatar : لتغيير صورة البوت
-> setStatus : لتغيير حالة البوت
+setStreaming : لجعل وضع البوت ستريمنق
+setWatching : لجعل وضع البوت واتشنق
+setListening : لجعل وضع البوت ليستننق
+setName :  لتغيير أسم البوت
+setAvatar : لتغيير صورة البوت
+setStatus : لتغيير حالة البوت
 **`
   if(message.content === prefix + 'help') {
     message.author.send(helplist);
   }
   });
-
-
-
-
 
 client.login(process.env.BOT_TOKEN);
