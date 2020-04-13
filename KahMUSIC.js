@@ -31,7 +31,6 @@ const CHANNELID = '699224759145332746'; // ايدي الروم
 
 //=================//
 const prefix = "1"; // البرافيكس
-//=================//
 
 
 // =================================[ SettingsVIP ]===================================
@@ -39,18 +38,12 @@ const prefix = "1"; // البرافيكس
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setActivity("1help✨",{type: 'WATCHING'})
+   client.user.setActivity("1help",{type: 'WATCHING'})
 });
 
   
-//======================================[Owners]======================================
-
-
+//تغير الحالة
 const developers = ["359541019836022784","","",""]
-
-
-
-
 client.on('message', message => {
 
     let argresult = message.content.split(` `).slice(1).join(' ');
@@ -85,18 +78,16 @@ client.on('message', message => {
   });
 
 
-
-
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
 
 let cmds = {
-  play: { cmd: 'play', a: ['p', 'تشغيل'] },
-  skip: { cmd: 'skip', a: ['s', 'تخطي'] },
-  stop: { cmd: 'stop', a: ['توقف'] },
+  play: { cmd: 'play', a: ['p', 'شغل'] },
+  skip: { cmd: 'skip', a: ['s', 'تخطى'] },
+  stop: { cmd: 'stop', a: ['ايقاف'] },
   pause: { cmd: 'pause', a: ['ايقاف مؤقت'] },
-  resume: { cmd: 'resume', a: ['r','استكمال'] },
+  resume: { cmd: 'resume', a: ['r','كمل'] },
   volume: { cmd: 'volume', a: ['vol','صوت'] },
   queue: { cmd: 'queue', a: ['q', 'قائمة'] },
   repeat: { cmd: 'repeat', a: ['re','تكرار'] },
@@ -644,11 +635,11 @@ client.on('message', message => {
     if (message.member.voiceChannel) {
       message.member.voiceChannel.join()
         .then(connection => { 
-          message.reply('**ابشر انا معاك ف الروم الان ..**!');
+          message.reply('\`تم الدخول الى الروم\`');
         })
         .catch(console.log);
     } else {
-      message.reply('**- لازم تخش روم صوتي!**');
+      message.reply('\` يجب الدخول الى روم صوتي\`');
     }
   }
 });
@@ -670,9 +661,9 @@ client.on('message', message => {
 \`Skip\` : تخطي للاغنية التالية 
 \`Volume\` : تغيير الصوت [vol] 
 \`Nowplaying\` : عرض مايتم تشغيله الان [np] 
-\`Ping\` : سرعة استجابة البوت 
 \`repeat\` : تكرار الاغنية 
-\`Leave\` : الخروج من الروم الصوتي  
+\`Leave\` : الخروج من الروم الصوتي 
+
 
 `
   if(message.content === prefix + 'help') {
@@ -689,6 +680,7 @@ client.on('message', message => {
   var helplist = `
 
 **:gear: اوامر الادارة  **
+
 \`setStreaming\` : لجعل وضع البوت ستريمنق
 \`setWatching\` : لجعل وضع البوت واتشنق
 \`setListening\` : لجعل وضع البوت ليستننق
