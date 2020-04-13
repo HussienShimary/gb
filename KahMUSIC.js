@@ -97,11 +97,11 @@ let cmds = {
   stop: { cmd: 'stop', a: ['توقف'] },
   pause: { cmd: 'pause', a: ['ايقاف مؤقت'] },
   resume: { cmd: 'resume', a: ['r','استكمال'] },
-  volume: { cmd: 'volume', a: ['vol','v'] },
+  volume: { cmd: 'volume', a: ['vol','صوت'] },
   queue: { cmd: 'queue', a: ['q', 'قائمة'] },
   repeat: { cmd: 'repeat', a: ['re','تكرار'] },
-  forceskip: { cmd: 'forceskip', a: ['fs', 'fskip'] },
-  skipto: { cmd: 'skipto', a: ['st', 'تخطي الي'] },
+  forceskip: { cmd: 'forceskip', a: ['تخطي الكل', 'fskip'] },
+  skipto: { cmd: 'skipto', a: ['st', 'اذهب الى'] },
   nowplaying: { cmd: 'Nowplaying', a: ['np', 'الان'] }
 };
 
@@ -658,23 +658,23 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-  var helplist = `**:notes:  قائمة الاوامر:  
+  var helplist = `**:notes:  قائمة الاوامر ** 
 
-Play : تشغيل الاغنية او اضافتها للقائمة او اكمال الاغنية [p] 
-Pause : ايقاف مؤقت الاغنية  
-Resume : اكمال الاغنية 
-stop : لأيقاف الأغنية وخروج البوت من الروم
-forceskip : لتخطي الأغنية بشكل مباشر
-Queue : عرض القائمة 
-skipto : لتخطي الأغنية الى الأغنية القادمة في طابور الموسيقى القادمة
-Skip : تخطي للاغنية التالية 
-Volume : تغيير الصوت [vol] 
-Nowplaying : عرض مايتم تشغيله الان [np] 
-Ping : سرعة استجابة البوت 
-repeat : تكرار الاغنية 
-Leave : الخروج من الروم الصوتي  
+\`Play\` : تشغيل الاغنية او اضافتها للقائمة او اكمال الاغنية [p] 
+\`Pause\` : ايقاف مؤقت الاغنية  
+\`Resume\` : اكمال الاغنية 
+\`stop\` : لأيقاف الأغنية وخروج البوت من الروم
+\`forceskip\` : لتخطي الأغنية بشكل مباشر
+\`Queue\` : عرض القائمة 
+\`skipto\` : لتخطي الأغنية الى الأغنية القادمة في طابور الموسيقى القادمة
+\`Skip\` : تخطي للاغنية التالية 
+\`Volume\` : تغيير الصوت [vol] 
+\`Nowplaying\` : عرض مايتم تشغيله الان [np] 
+\`Ping\` : سرعة استجابة البوت 
+\`repeat\` : تكرار الاغنية 
+\`Leave\` : الخروج من الروم الصوتي  
 
-**`
+`
   if(message.content === prefix + 'help') {
             message.delete(1000)
     let e = '** جاري الارســال .. :envelope_with_arrow: **'
@@ -686,14 +686,16 @@ Leave : الخروج من الروم الصوتي
 
 client.on('message', message => {
       if (!developers.includes(message.author.id)) return;
-  var helplist = `**:gear: | اوامر الادارة:  
-setStreaming : لجعل وضع البوت ستريمنق
-setWatching : لجعل وضع البوت واتشنق
-setListening : لجعل وضع البوت ليستننق
-setName :  لتغيير أسم البوت
-setAvatar : لتغيير صورة البوت
-setStatus : لتغيير حالة البوت
-**`
+  var helplist = `
+
+**:gear: اوامر الادارة  **
+\`setStreaming\` : لجعل وضع البوت ستريمنق
+\`setWatching\` : لجعل وضع البوت واتشنق
+\`setListening\` : لجعل وضع البوت ليستننق
+\`setName\` :  لتغيير أسم البوت
+\`setAvatar\` : لتغيير صورة البوت
+\`setStatus\` : لتغيير حالة البوت
+`
   if(message.content === prefix + 'help') {
     message.author.send(helplist);
   }
