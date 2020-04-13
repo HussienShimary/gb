@@ -2,7 +2,7 @@
   "name": "Kahrbaa",
   "version": "2.0.0",
   "description": "Music Bot V2",
-  "main": "KahMUSIC.js",
+  "main": "music.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Abady321x123/simple-music.git"
@@ -84,6 +84,6 @@
     "merge-descriptors": "^1.0.1"
   },
   "scripts": {
-    "start": "node KahMUSIC.js"
+    "start": "node music.js"
   }
 }
