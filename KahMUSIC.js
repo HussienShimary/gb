@@ -665,7 +665,7 @@ client.on('message', message => {
 `
   if(message.content === prefix + 'help') {
             message.delete(1000)
-    let e = '** جاري الارســال .. :envelope_with_arrow: **'
+    let e = '\`تم ارسال الاوامر خاص\`'
 	  message.reply(e).then(m => m.delete(10000))
 	  message.author.send(helplist).catch(error => message.reply('** لم اتمكن من الارسال الاوامر لك , يرجي فتح خاصك :negative_squared_cross_mark:**'))
 }
