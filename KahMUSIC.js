@@ -99,7 +99,7 @@ let cmds = {
   resume: { cmd: 'resume', a: ['r','استكمال'] },
   volume: { cmd: 'volume', a: ['vol','v'] },
   queue: { cmd: 'queue', a: ['q', 'قائمة'] },
-  repeat: { cmd: 'repeat', a: ['re','اعادة'] },
+  repeat: { cmd: 'repeat', a: ['re','تكرار'] },
   forceskip: { cmd: 'forceskip', a: ['fs', 'fskip'] },
   skipto: { cmd: 'skipto', a: ['st', 'تخطي الي'] },
   nowplaying: { cmd: 'Nowplaying', a: ['np', 'الان'] }
@@ -673,6 +673,7 @@ Nowplaying : عرض مايتم تشغيله الان [np]
 Ping : سرعة استجابة البوت 
 repeat : تكرار الاغنية 
 Leave : الخروج من الروم الصوتي  
+
 **`
   if(message.content === prefix + 'help') {
             message.delete(1000)
