@@ -32,15 +32,19 @@ const CHANNELID = '699224759145332746'; // تعديل مهم ايدي الروم
 //البرفكس
 const prefix = "1"; // تعديل مهم حط هنا البرفكس او مقدمة الامر
 
-
-client.on('ready', () => {
+client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setActivity(`Type ${prefix}help`, { type: "Playing" }); ///التعديل علي البلاينج
 });
+client.on("ready", () => {
+  client.user.setStatus("idle");
+});
+client.on('ready', () => {
+    client.user.setActivity(`Type ${prefix}help`,{ type: 'WATCHING' });
+})
 
 
 //تغير الحالة
-const developers = ["359541019836022784","","",""]
+const developers = ["359541019836022784","","",""] ///تعديل مهم حط هنا ايدي اللي بدك يتحكمو بالحالة
 client.on('message', message => {
 
     let argresult = message.content.split(` `).slice(1).join(' ');
@@ -675,7 +679,7 @@ client.on('message', message => {
 client.on('message', message => {
       if (!developers.includes(message.author.id)) return;
   var helplist = `
-
+ 
 **:gear: اوامر الادارة  **
 
 \`setStreaming\` : لجعل وضع البوت ستريمنق
