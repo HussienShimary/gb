@@ -6,7 +6,7 @@ app.get("/", (request, response) => {
 });
 app.listen(process.env.PORT);
 setInterval(() => {
-  http.get(`http://zippy-sundae.glitch.me/`);
+  http.get(`http://name.glitch.me/`); //تعديل مهم حط اسم المشروع
 }, 280000);
 
 //كل البكجات

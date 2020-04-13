@@ -1,5 +1,5 @@
 {
-  "name": "Kahrbaa",
+  "name": "0sama18",
   "version": "2.0.0",
   "description": "Music Bot V2",
   "main": "music.js",
@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/Abady321x123/simple-music.git"
   },
-  "author": "Kahrbaa",
+  "author": "0sama18",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Abady321x123/simple-music/issues"
