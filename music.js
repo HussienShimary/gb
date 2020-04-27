@@ -6,7 +6,7 @@ app.get("/", (request, response) => {
 });
 app.listen(process.env.PORT);
 setInterval(() => {
-  http.get(`http://name.glitch.me/`); //تعديل مهم حط اسم المشروع
+  http.get(`http://js-music4.glitch.me/`); //تعديل مهم حط اسم المشروع
 }, 280000);
 
 //كل البكجات
@@ -26,11 +26,11 @@ const weather = require('weather-js');
 const pretty = require("pretty-ms");
 client.on('warn', console.warn);
 client.on('error', console.error);
-const GUILDID = '695864316074655824'; //  تعديل مهم ايدي السيرفر  
-const CHANNELID = '699224759145332746'; // تعديل مهم ايدي الروم الصوتي
+const GUILDID = '332259309494992896'; //  تعديل مهم ايدي السيرفر  
+const CHANNELID = '694661270720479233'; // تعديل مهم ايدي الروم الصوتي
 
 //البرفكس
-const prefix = "1"; // تعديل مهم حط هنا البرفكس او مقدمة الامر
+const prefix = "4"; // تعديل مهم حط هنا البرفكس او مقدمة الامر
 
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -44,7 +44,7 @@ client.on('ready', () => {
 
 
 //تغير الحالة
-const developers = ["359541019836022784","","",""] ///تعديل مهم حط هنا ايدي اللي بدك يتحكمو بالحالة
+const developers = ["457231127476961291","","",""] ///تعديل مهم حط هنا ايدي اللي بدك يتحكمو بالحالة
 client.on('message', message => {
 
     let argresult = message.content.split(` `).slice(1).join(' ');
@@ -136,7 +136,7 @@ const ytdl = require('ytdl-core');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
-const youtube = new YouTube("AIzaSyApFg4t8RUKVHjeXl3VUFJMVT-V1WuaiHM"); //تعديل مهم عدل الاي بي اي بواحد جديد او خليه زي ماهو
+const youtube = new YouTube("AIzaSyAbinsR-d1cASop8KjUNskd3rWDGj2GKu0"); //تعديل مهم عدل الاي بي اي بواحد جديد او خليه زي ماهو
 
 
 let active = new Map();
