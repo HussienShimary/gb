@@ -1,5 +1,5 @@
 {
-  "name": "0sama18",
+  "name": "lorns",
   "version": "2.0.0",
   "description": "Music Bot V2",
   "main": "music.js",
@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/Abady321x123/simple-music.git"
   },
-  "author": "0sama18",
+  "author": "lorns",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Abady321x123/simple-music/issues"
