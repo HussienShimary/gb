@@ -11,23 +11,14 @@ setInterval(() => {
 
 //كل البكجات
 const Discord = require('discord.js');
-const converter = require('number-to-words');
-const moment = require('moment');
-const dateformat = require('dateformat');
-const ms = require('parse-ms')
 const client = new Discord.Client({ disableEveryone: true});
 const bot = new Discord.Client();
 const fs = require('fs');
-const request = require('request');
 const r1 = require('snekfetch');
-const Canvas = require("canvas");
-const jimp = require('jimp')
-const weather = require('weather-js');
-const pretty = require("pretty-ms");
 client.on('warn', console.warn);
 client.on('error', console.error);
 const GUILDID = '332259309494992896'; //  تعديل مهم ايدي السيرفر  
-const CHANNELID = '694661270720479233'; // تعديل مهم ايدي الروم الصوتي
+const CHANNELID = '693952777000583228'; // تعديل مهم ايدي الروم الصوتي
 
 //البرفكس
 const prefix = "1"; // تعديل مهم حط هنا البرفكس او مقدمة الامر
@@ -133,11 +124,8 @@ var value = cmds[key];
 })
 
 const ytdl = require('ytdl-core');
-const getYoutubeID = require('get-youtube-id');
-const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
-const youtube = new YouTube("AIzaSyAbinsR-d1cASop8KjUNskd3rWDGj2GKu0"); //تعديل مهم عدل الاي بي اي بواحد جديد او خليه زي ماهو
-
+const youtube = new YouTube("AIzaSyAZG8hf5L7FawiydA6Sik4SoT1cgTGsM7g"); 
 
 let active = new Map();
 
@@ -414,12 +402,7 @@ function play(guild, song) {
         let num;
         if((i) > 8) {
           let st = `${i+1}`
-          let n1 = converter.toWords(st[0])
-          let n2 = converter.toWords(st[1])
-          num = `:${n1}::${n2}:`
         } else {
-        let n = converter.toWords(i+1)
-        num = `:${n}:`
       }
         text += `${num} ${queue.songs[i].title} [${queue.songs[i].duration}]\n`
       }
