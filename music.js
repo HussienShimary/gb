@@ -17,11 +17,11 @@ const fs = require('fs');
 const r1 = require('snekfetch');
 client.on('warn', console.warn);
 client.on('error', console.error);
-const GUILDID = '722344504937676824'; //  تعديل مهم ايدي السيرفر  
-const CHANNELID = '727901804293259307'; // تعديل مهم ايدي الروم الصوتي
+const GUILDID = '745017587594690681'; //  تعديل مهم ايدي السيرفر  
+const CHANNELID = '745017588039286847'; // تعديل مهم ايدي الروم الصوتي
 
 //البرفكس
-const prefix = "Lon"; // تعديل مهم حط هنا البرفكس او مقدمة الامر
+const prefix = "Hi"; // تعديل مهم حط هنا البرفكس او مقدمة الامر
 
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
