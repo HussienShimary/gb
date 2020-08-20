@@ -6,7 +6,7 @@ app.get("/", (request, response) => {
 });
 app.listen(process.env.PORT);
 setInterval(() => {
-  http.get(`http://hussienlon.glitch.me/`); //تعديل مهم حط اسم المشروع
+  http.get(``); //تعديل مهم حط اسم المشروع
 }, 280000);
 
 //كل البكجات
